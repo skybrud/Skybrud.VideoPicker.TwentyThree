@@ -1,0 +1,6 @@
+src/.vs
+src/packages
+src/Skybrud.VideoPicker.TwentyThree.Website
+src/Skybrud.VideoPicker.TwentyThree/obj
+src/Skybrud.VideoPicker.TwentyThree/bin
+*.nupkg
