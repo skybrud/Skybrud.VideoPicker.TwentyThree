@@ -13,7 +13,7 @@ In the ~/Config folder add `Skybrud.VideoPicker.config` with the following conte
     <twentythree>
       <credentials
         id="fda08a63-57a8-4eb2-8131-d5efb7cd0302"
-        name="Gubi"
+        name="[Add any name here]"
         accessToken="[Add access token here]"
         accessTokenSecret="[Add access token secret here]"
         consumerKey="[Add consumer key here]"
