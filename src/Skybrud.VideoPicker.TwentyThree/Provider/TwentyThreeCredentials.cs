@@ -1,7 +1,4 @@
 ﻿using Skybrud.Essentials.Xml.Extensions;
-using Skybrud.Social.TwentyThree;
-using Skybrud.Social.TwentyThree.OAuth;
-using Skybrud.VideoPicker.Exceptions;
 using Skybrud.VideoPicker.Models.Config;
 using System;
 using System.Xml.Linq;
@@ -33,22 +30,6 @@ namespace Skybrud.VideoPicker.TwentyThree.Provider
             ConsumerKey = xml.GetAttributeValue("consumerKey");
             ConsumerSecret = xml.GetAttributeValue("consumerSecret");
             IsConfigured = string.IsNullOrWhiteSpace(AccessToken) == false || string.IsNullOrWhiteSpace(ConsumerKey) == false && string.IsNullOrWhiteSpace(ConsumerSecret) == false;
-        }
-
-        public TwentyThreeService GetService()
-        {            
-            if (!string.IsNullOrWhiteSpace(AccessToken) 
-                && !string.IsNullOrWhiteSpace(AccessTokenSecret) 
-                && !string.IsNullOrWhiteSpace(ConsumerKey) 
-                && !string.IsNullOrWhiteSpace(ConsumerSecret))
-            {
-                TwentyThreeOAuthClient client = new TwentyThreeOAuthClient(ConsumerKey, ConsumerSecret, AccessToken, AccessTokenSecret, "");
-                return TwentyThreeService.CreateFromOAuthClient(client);
-            }
-               
-
-            throw new VideosException("Vimeo credentials isn't configured.");
-
         }
     }
 }

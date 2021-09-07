@@ -2,7 +2,7 @@
 
 namespace Skybrud.VideoPicker.TwentyThree.Provider
 {
-    internal class TwentyThreeVideoOptions : IVideoOptions
+    public class TwentyThreeVideoOptions : IVideoOptions
     {
         public string ChannelId { get; }
         public string VideoId { get; }

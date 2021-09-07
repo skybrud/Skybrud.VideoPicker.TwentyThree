@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Skybrud.VideoPicker.TwentyThree.Provider
 {
-    internal class TwentyThreeConfig : IProviderConfig
+    public class TwentyThreeConfig : IProviderConfig
     {
         public TwentyThreeCredentials[] Credentials { get; }
 

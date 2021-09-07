@@ -3,7 +3,7 @@ using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.VideoPicker.TwentyThree.Provider
 {
-    internal class TwentyThreeOEmbed
+    public class TwentyThreeOEmbed
     {
         public string Title { get; internal set; }
         public int ThumbnailWidth { get; internal set; }

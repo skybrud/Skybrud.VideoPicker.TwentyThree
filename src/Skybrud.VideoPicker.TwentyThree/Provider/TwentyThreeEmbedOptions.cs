@@ -6,20 +6,11 @@ using System.Web;
 
 namespace Skybrud.VideoPicker.TwentyThree.Provider
 {
-    internal class TwentyThreeEmbedOptions : IVideoEmbedOptions
+    public class TwentyThreeEmbedOptions : IVideoEmbedOptions
     {
         private readonly TwentyThreeVideoDetails _details;
 
         #region Properties
-
-        [JsonProperty("url")]
-        public string Url => $"https://www.dreambroker.com/channel/{_details.ChannelId}/{_details.Id}";
-
-        /// <summary>
-        /// Gets whether the embed code requires prior consent before being show to the user.
-        /// </summary>
-        [JsonProperty("consent")]
-        public bool RequireConsent { get; }
 
         /// <summary>
         /// Indicates whether the video should automatically start to play when the player loads.
@@ -39,8 +30,6 @@ namespace Skybrud.VideoPicker.TwentyThree.Provider
             _details = details;
 
             config = config ?? new TwentyThreeDataTypeConfig();
-
-            RequireConsent = config.RequireConsent.Value;
             Autoplay = config.Autoplay.Value;
 
         }
@@ -58,9 +47,7 @@ namespace Skybrud.VideoPicker.TwentyThree.Provider
         {
 
             HttpQueryString query = new HttpQueryString();
-            if (Autoplay) query.Add("autoplay", "true");
-
-            string embedUrl = $"https://dreambroker.com/channel/{_details.ChannelId}/iframe/{_details.Id}{(query.IsEmpty ? string.Empty : "?" + query)}";
+            if (Autoplay) query.Add("autoplay", "1");
 
             HtmlDocument document = new HtmlDocument();
 
@@ -69,8 +56,6 @@ namespace Skybrud.VideoPicker.TwentyThree.Provider
             iframe.Attributes.Add("frameborder", "0");
             iframe.Attributes.Add("width", width.ToString());
             iframe.Attributes.Add("height", height.ToString());
-
-            iframe.Attributes.Add(RequireConsent ? "consent-src" : "src", embedUrl);
 
             if (Autoplay) iframe.Attributes.Add("allow", "autoplay");
 

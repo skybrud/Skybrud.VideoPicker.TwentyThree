@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Skybrud.VideoPicker.TwentyThree.Provider
 {
-    internal class TwentyThreeVideoDetails : IVideoDetails
+    public class TwentyThreeVideoDetails : IVideoDetails
     {
         #region Properties
 
@@ -39,7 +39,6 @@ namespace Skybrud.VideoPicker.TwentyThree.Provider
             Title = oembed.Title;
             Thumbnails = new List<VideoThumbnail> {
                 new VideoThumbnail(oembed.ThumbnailWidth, oembed.ThumbnailHeight, oembed.ThumbnailUrl),
-                new VideoThumbnail(1020, 576, $"https://dreambroker.com/channel/{channelId}/{videoId}/get/poster")
             }.ToArray();
             Embed = oembed.Html;
         }

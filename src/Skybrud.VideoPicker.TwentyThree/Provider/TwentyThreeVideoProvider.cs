@@ -10,7 +10,6 @@ using Skybrud.VideoPicker.Models.Options;
 using Skybrud.VideoPicker.Models.Providers;
 using Skybrud.VideoPicker.PropertyEditors;
 using Skybrud.VideoPicker.Providers;
-using Skybrud.VideoPicker.Providers.YouTube;
 using Skybrud.VideoPicker.Services;
 using System.Linq;
 using System.Net;
@@ -28,7 +27,7 @@ namespace Skybrud.VideoPicker.TwentyThree.Provider
         public string ConfigView => "/App_Plugins/Skybrud.VideoPicker.TwentyThree/Views/Config.html";
 
         public string EmbedView => null;
-        
+
         public bool IsMatch(VideoPickerService service, string source, out IVideoOptions options)
         {
             options = null;
@@ -58,8 +57,8 @@ namespace Skybrud.VideoPicker.TwentyThree.Provider
         {
             if (!(options is TwentyThreeVideoOptions o)) return null;
 
-            string oembedUrl = "https://dreambroker.com/channel/oembed?" + new HttpQueryString {
-                {"url", $"https://dreambroker.com/channel/{o.ChannelId}/{o.VideoId}"},
+            string oembedUrl = "https://video.gubi.com/oembed?" + new HttpQueryString {
+                {"url", $"https://video.gubi.com/manage/video/{o.VideoId}"},
                 {"format", "json"}
             };
 
