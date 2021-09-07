@@ -1,10 +1,44 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <Version>1.0.0-alpha001</Version>
+    <Authors>Jesper Mayntzhusen</Authors>
+    <Company>Skybrud.dk</Company>
+    <Description>Skybrud.VideoPicker.TwentyThree is an extension package to Skybrud.VideoPicker which adds a provider for videos from twentythree.com.</Description>
+    <Copyright>Copyright © 2021</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Skybrud.VideoPicker.TwentyThree</PackageId>
+    <PackageTags>Skybrud, Umbraco, Video, TwentyThree</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://packages.skybrud.dk/skybrud.videopicker.twentythree/</PackageProjectUrl>
+    <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/skybrud/Skybrud.VideoPicker.TwentyThree</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="App_Plugins\Skybrud.VideoPicker.TwentyThree\**\*.js" />
+    <Content Include="App_Plugins\Skybrud.VideoPicker.TwentyThree\**\*.css" />
+    <Content Include="App_Plugins\Skybrud.VideoPicker.TwentyThree\**\*.html" />
+    <Content Include="App_Plugins\Skybrud.VideoPicker.TwentyThree\**\*.xml" />
+    <Content Include="App_Plugins\Skybrud.VideoPicker.TwentyThree\package.manifest" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.36" />
-    <PackageReference Include="Skybrud.VideoPicker" Version="2.0.0-alpha004" />
+    <PackageReference Include="Skybrud.VideoPicker" Version="2.0.0-alpha004" >
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="UmbracoCms.Core" Version="8.1.0" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(ConfigurationName)'=='Release' AND '$(BuildTools)'=='1'">
+    <Exec Command="&quot;$(ProjectDir)..\build\Skybrud.BuildTools.Tasks.exe&quot; &quot;postBuild&quot; &quot;$(ConfigurationName)&quot; &quot;$(ProjectPath)&quot; &quot;$(TargetPath)&quot;" />
+  </Target>
 </Project>
